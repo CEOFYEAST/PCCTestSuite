@@ -1,13 +1,12 @@
 import { createApp } from 'vue'
-//import App from './App.vue'
+import App from './App.vue'
 import {link} from './globals.module.js'
-import setConfig from '@ceofyeast/prodchaincalculators/config'
+import config from '@ceofyeast/prodchaincalculators/config'
 
-setConfig({
-    baseURL: link
-})
+config.baseURL = link
 
-await import('./App.vue').then((AppModule) => {
-    createApp(AppModule.default).mount('#app')
-})
+createApp(App).mount('#app')
+// await import('./App.vue').then((AppModule) => {
+    
+// })
 
