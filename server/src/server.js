@@ -3,7 +3,7 @@
 'use strict'
 
 const Fastify = require('fastify')
-const PORT = 3002
+const PORT = 3000
 const HOST = 'localhost'
 
 const app = Fastify({

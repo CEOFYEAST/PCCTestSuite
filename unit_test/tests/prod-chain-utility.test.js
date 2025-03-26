@@ -1,4 +1,4 @@
-import {createProductionChain, getUserDemand, getValidIDs, recalculateTimeUnit} from "@ceofyeast/prodchaincalculators/utility"
+import {createProductionChainObject, getUserDemand, getItemIDs, getItemNamesAndIDs, recalculateTimeUnit} from "@ceofyeast/prodchaincalculators/utility"
 import * as SampleChains from "../test_data/prod-chain-data.js"
 import {deepCopy} from "./helpers.module.js"
 
@@ -14,17 +14,36 @@ test('Test user demand parse on populated production chain', () => {
     expect(getUserDemand(SampleChains.populatedProdChain["prodChain"])).toEqual(populatedParsedUserDemand)
 })
 
-// Get Valid IDs Tests
+// Get Item IDs Tests
 
     // VALID TESTS
 
-test('valid IDs is object', () => {
-    expect(typeof getValidIDs()).toBe('object')
+test('Item IDs is object', () => {
+    expect(typeof getItemIDs()).toBe('object')
 })
 
-test('valid IDs contains ID', () => {
-    expect(getValidIDs()).toContain("inserter")
+test('Item IDs contains ID', () => {
+    expect(getItemIDs()).toContain("inserter")
 })
+
+// Get Item IDs and Names Tests
+
+    // VALID TESTS
+
+test("Item IDs + names is object", () => {
+    expect(typeof getItemNamesAndIDs()).toBe('object')
+})
+
+test("Item IDs + names has key/val pair", () => {
+    expect(getItemNamesAndIDs()["Iron ore"]).toBe('iron-ore')
+})
+
+test("Item IDs + names has multiple key/val pairs", () => {
+    expect(getItemNamesAndIDs()).toMatchObject(sampleItemNamesAndIDs)
+})
+
+
+//test('')
 
 // Recalculate Time Unit Tests
 
@@ -62,18 +81,18 @@ test('Test valid simple prod. chain conversion to hours', () => {
 
 test('Test invalid time unit input for creation throws exception', () => {
     expect(() => {
-        createProductionChain("bruh")
+        createProductionChainObject("bruh")
     }).toThrow()
 })
 
     // VALID TESTS
 
 test('Test production chain creation', () => {
-    expect(createProductionChain()).toEqual(SampleChains.emptyProdChain)
+    expect(createProductionChainObject()).toEqual(SampleChains.emptyProdChain)
 })
 
 test('Test production chain creation w/ time unit', () => {
-    expect(createProductionChain("second")).toEqual(SampleChains.emptyProdChain_Second)
+    expect(createProductionChainObject("second")).toEqual(SampleChains.emptyProdChain_Second)
 })
 
 // TEST DATA
@@ -85,4 +104,11 @@ let simpleParsedUserDemand = {
 let populatedParsedUserDemand = {
     "long-handed-inserter": 20,
     "inserter": 10
+}
+
+let sampleItemNamesAndIDs = {
+    "Long handed inserter": "long-handed-inserter",
+    "Inserter": "inserter",
+    "Iron ore": "iron-ore",
+    "Burner inserter": "burner-inserter"
 }

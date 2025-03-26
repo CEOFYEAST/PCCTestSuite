@@ -16,19 +16,19 @@ export let simpleProdChain = {
         "burner-inserter": {
             userIRPTU: 10,
             intermIRPTU: 0,
-            dependencyItems: {}
+            dependentItems: {}
         },
         "iron-gear-wheel": {
             userIRPTU: 0,
             intermIRPTU: 10,
-            dependencyItems: {
+            dependentItems: {
                 "burner-inserter": 10
             }
         },
         "iron-plate": {
             userIRPTU: 0,
             intermIRPTU: 30,
-            dependencyItems: {
+            dependentItems: {
                 "burner-inserter": 10,
                 "iron-gear-wheel": 20
             }
@@ -36,7 +36,7 @@ export let simpleProdChain = {
         "iron-ore": {
             userIRPTU: 0,
             intermIRPTU: 30,
-            dependencyItems: {
+            dependentItems: {
                 "iron-plate": 30
             }
         }
@@ -48,7 +48,7 @@ export let simpleUserDemand = {
         "burner-inserter": {
             userIRPTU: 10,
             intermIRPTU: 0,
-            dependencyItems: {}
+            dependentItems: {}
         },
     }
 }
@@ -58,7 +58,7 @@ export let simpleIntermDemand = {
         "iron-plate": {
             userIRPTU: 0,
             intermIRPTU: 30,
-            dependencyItems: {
+            dependentItems: {
                 "burner-inserter": 10,
                 "iron-gear-wheel": 20
             }
@@ -72,19 +72,19 @@ export let populatedProdChain = {
         "long-handed-inserter": {
             userIRPTU: 20,
             intermIRPTU: 0,
-            dependencyItems: {}
+            dependentItems: {}
         },
         "inserter": {
             userIRPTU: 10,
             intermIRPTU: 20,
-            dependencyItems: {
+            dependentItems: {
                 "long-handed-inserter": 20
             }
         },
         "iron-gear-wheel": {
             userIRPTU: 0,
             intermIRPTU: 50,
-            dependencyItems: {
+            dependentItems: {
                 "inserter": 30,
                 "long-handed-inserter": 20
             }
@@ -92,28 +92,28 @@ export let populatedProdChain = {
         "electronic-circuit": {
             userIRPTU: 0,
             intermIRPTU: 30,
-            dependencyItems: {
+            dependentItems: {
                 "inserter": 30,
             }
         },
         "copper-cable": {
             userIRPTU: 0,
             intermIRPTU: 90,
-            dependencyItems: {
+            dependentItems: {
                 "electronic-circuit": 90
             }
         },
         "copper-plate": {
             userIRPTU: 0,
             intermIRPTU: 45,
-            dependencyItems: {
+            dependentItems: {
                 "copper-cable": 45
             }
         },
         "iron-plate": {
             userIRPTU: 0,
             intermIRPTU: 180,
-            dependencyItems: {
+            dependentItems: {
                 "electronic-circuit": 30,
                 "iron-gear-wheel": 100,
                 "inserter": 30,
@@ -123,14 +123,14 @@ export let populatedProdChain = {
         "copper-ore": {
             userIRPTU: 0,
             intermIRPTU: 45,
-            dependencyItems: {
+            dependentItems: {
                 "copper-plate": 45
             }
         },
         "iron-ore": {
             userIRPTU: 0,
             intermIRPTU: 180,
-            dependencyItems: {
+            dependentItems: {
                 "iron-plate": 180
             }
         }
@@ -142,12 +142,12 @@ export let popUserDemand = {
         "long-handed-inserter": {
             userIRPTU: 20,
             intermIRPTU: 0,
-            dependencyItems: {}
+            dependentItems: {}
         },
         "inserter": {
             userIRPTU: 10,
             intermIRPTU: 20,
-            dependencyItems: {
+            dependentItems: {
                 "long-handed-inserter": 20
             }
         }
@@ -159,7 +159,7 @@ export let popIntermDemand = {
         "iron-plate": {
             userIRPTU: 0,
             intermIRPTU: 180,
-            dependencyItems: {
+            dependentItems: {
                 "electronic-circuit": 30,
                 "iron-gear-wheel": 100,
                 "inserter": 30,
@@ -176,19 +176,19 @@ export let partialProdChain = {
         "burner-inserter": {
             userIRPTU: 5,
             intermIRPTU: 0,
-            dependencyItems: {}
+            dependentItems: {}
         },
         "iron-gear-wheel": {
             userIRPTU: 0,
             intermIRPTU: 5,
-            dependencyItems: {
+            dependentItems: {
                 "burner-inserter": 5
             }
         },
         "iron-plate": {
             userIRPTU: 0,
             intermIRPTU: 15,
-            dependencyItems: {
+            dependentItems: {
                 "burner-inserter": 5,
                 "iron-gear-wheel": 10
             }
@@ -196,7 +196,7 @@ export let partialProdChain = {
         "iron-ore": {
             userIRPTU: 0,
             intermIRPTU: 15,
-            dependencyItems: {
+            dependentItems: {
                 "iron-plate": 15
             }
         }
@@ -227,19 +227,19 @@ export let simpleProdChain_Seconds = {
         "burner-inserter": {
             userIRPTU: expect.closeTo(0.166),
             intermIRPTU: 0,
-            dependencyItems: {}
+            dependentItems: {}
         },
         "iron-gear-wheel": {
             userIRPTU: 0,
             intermIRPTU: expect.closeTo(0.166),
-            dependencyItems: {
+            dependentItems: {
                 "burner-inserter": expect.closeTo(0.166)
             }
         },
         "iron-plate": {
             userIRPTU: 0,
             intermIRPTU: 0.5,
-            dependencyItems: {
+            dependentItems: {
                 "burner-inserter": expect.closeTo(0.166),
                 "iron-gear-wheel": expect.closeTo(0.333)
             }
@@ -247,7 +247,7 @@ export let simpleProdChain_Seconds = {
         "iron-ore": {
             userIRPTU: 0,
             intermIRPTU: 0.5,
-            dependencyItems: {
+            dependentItems: {
                 "iron-plate": 0.5
             }
         }
@@ -260,19 +260,19 @@ export let simpleProdChain_Hours = {
         "burner-inserter": {
             userIRPTU: 600,
             intermIRPTU: 0,
-            dependencyItems: {}
+            dependentItems: {}
         },
         "iron-gear-wheel": {
             userIRPTU: 0,
             intermIRPTU: 600,
-            dependencyItems: {
+            dependentItems: {
                 "burner-inserter": 600
             }
         },
         "iron-plate": {
             userIRPTU: 0,
             intermIRPTU: 1800,
-            dependencyItems: {
+            dependentItems: {
                 "burner-inserter": 600,
                 "iron-gear-wheel": 1200
             }
@@ -280,7 +280,7 @@ export let simpleProdChain_Hours = {
         "iron-ore": {
             userIRPTU: 0,
             intermIRPTU: 1800,
-            dependencyItems: {
+            dependentItems: {
                 "iron-plate": 1800
             }
         }

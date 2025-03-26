@@ -1,20 +1,20 @@
 export let simpleDemandOutput = {
     "iron-gear-wheel": {
         IRPTU: 10,
-        dependencyItems: {
+        dependentItems: {
             "burner-inserter": 10
         }
     },
     "iron-plate": {
         IRPTU: 30,
-        dependencyItems: {
+        dependentItems: {
             "burner-inserter": 10,
             "iron-gear-wheel": 20
         }
     },
     "iron-ore": {
         IRPTU: 30,
-        dependencyItems: {
+        dependentItems: {
             "iron-plate": 30
         }
     }
@@ -23,38 +23,38 @@ export let simpleDemandOutput = {
 export let populatedDemandOutput = {
     "inserter": {
         IRPTU: 10,
-        dependencyItems: {
+        dependentItems: {
             "long-handed-inserter": 10
         }
     },
     "iron-gear-wheel": {
         IRPTU: 20,
-        dependencyItems: {
+        dependentItems: {
             "long-handed-inserter": 10,
             "inserter": 10
         }
     },
     "electronic-circuit": {
         IRPTU: 10,
-        dependencyItems: {
+        dependentItems: {
             "inserter": 10,
         }
     },
     "copper-cable": {
         IRPTU: 30,
-        dependencyItems: {
+        dependentItems: {
             "electronic-circuit": 30
         }
     },
     "copper-plate": {
         IRPTU: 15,
-        dependencyItems: {
+        dependentItems: {
             "copper-cable": 15
         }
     },
     "iron-plate": {
         IRPTU: 70,
-        dependencyItems: {
+        dependentItems: {
            "electronic-circuit": 10,
             "iron-gear-wheel": 40,
             "inserter": 10,
@@ -63,13 +63,13 @@ export let populatedDemandOutput = {
     },
     "iron-ore": {
         IRPTU: 70,
-        dependencyItems: {
+        dependentItems: {
             "iron-plate": 70
         }
     },
     "copper-ore": {
         IRPTU: 15,
-        dependencyItems: {
+        dependentItems: {
             "copper-plate": 15
         }
     },

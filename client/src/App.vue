@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     createFactory(){
-      this.loadedFactory = UTILITY.createProductionChain()
+      this.loadedFactory = UTILITY.createProductionChainObject()
       this.prodChain = this.loadedFactory.prodChain
       this.userInput = UTILITY.getUserDemand(this.prodChain)
     },
@@ -71,7 +71,7 @@ export default {
       this.userInput = UTILITY.getUserDemand(this.prodChain)
     },
     addOneOfEach(){
-      let itemIDs = UTILITY.getValidIDs()
+      let itemIDs = UTILITY.getItemIDs()
       for(let i = 0; i < itemIDs.length; i++){
         IRPTU.addIRPTU(itemIDs[i], 1, this.loadedFactory)
       }
