@@ -209,7 +209,7 @@ export let invalidProdChain_NoTimeUnit = {
     prodChain: {}
 }
 
-export let invalidProdChain_NoProdChain = {
+export let invalidProdChain_NoProdChainData = {
     timeUnit: "second"
 }
 
@@ -218,6 +218,14 @@ export let invalidProdChain_InvalidTimeUnit = {
     prodChain: {}
 }
 
+export let invalidProdChain_InvalidProdChainData = {
+    timeUnit: "second",
+    prodChain: {
+        "bad-id": {
+            
+        }
+    }
+}
 
 // TIME UNIT RECALC-RELATED DATA
 

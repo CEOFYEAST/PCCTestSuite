@@ -28,11 +28,11 @@ test('Test empty prod. chain input throws exception', () => {
 
 test('Test empty prod. chain data input throws exception', () => {
     expect(() => {
-        addIRPTU("burner-inserter", 5, SampleChains.invalidProdChain_NoProdChain)
+        addIRPTU("burner-inserter", 5, SampleChains.invalidProdChain_NoProdChainData)
     }).toThrow()
 
     expect(() => {
-        subtractIRPTU("burner-inserter", 5, SampleChains.invalidProdChain_NoProdChain)
+        subtractIRPTU("burner-inserter", 5, SampleChains.invalidProdChain_NoProdChainData)
     }).toThrow()
 })
 
@@ -53,6 +53,16 @@ test('Test invalid prod. chain time unit input throws exception', () => {
 
     expect(() => {
         subtractIRPTU("burner-inserter", 5, SampleChains.invalidProdChain_InvalidTimeUnit)
+    }).toThrow()
+})
+
+test('Test invalid prod. chain data input throws exception', () => {
+    expect(() => {
+        addIRPTU("burner-inserter", 5, SampleChains.invalidProdChain_InvalidProdChainData)
+    }).toThrow()
+
+    expect(() => {
+        subtractIRPTU("burner-inserter", 5, SampleChains.invalidProdChain_InvalidProdChainData)
     }).toThrow()
 })
 
