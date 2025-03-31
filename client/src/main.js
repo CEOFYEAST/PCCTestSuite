@@ -12,3 +12,11 @@ createApp(App).mount('#app')
     
 // })
 
+function loadedListener(){
+    console.log("I heard a load!!! (recipes loaded listener)")
+}
+
+import('@ceofyeast/prodchaincalculators/recipes').then((recipesModule) => {
+    recipesModule.addRecipesLoadedListener(loadedListener)
+})
+
