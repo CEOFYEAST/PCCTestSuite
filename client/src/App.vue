@@ -81,8 +81,12 @@ export default {
       this.userInput = UTILITY.getUserDemand(this.prodChain)
     },
     addToFactory(){
-      IRPTU.addIRPTU(this.itemID, this.itemIRPTU, this.loadedFactory)
-      this.userInput = UTILITY.getUserDemand(this.prodChain)
+      try {
+        IRPTU.addIRPTU(this.itemID, this.itemIRPTU, this.loadedFactory)
+        this.userInput = UTILITY.getUserDemand(this.prodChain)
+      } catch(err){
+        console.log("Error Message: " + err.message)
+      }
     },
     removeFromFactory(){
       IRPTU.subtractIRPTU(this.itemID, this.itemIRPTU, this.loadedFactory)
