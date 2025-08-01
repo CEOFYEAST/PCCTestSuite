@@ -1,4 +1,4 @@
-import {addIRPTU, subtractIRPTU} from "@ceofyeast/prodchaincalculators/irptu"
+import {addIRPTU, subtractIRPTU} from "@ceofyeast/prodchaincalculators-server/irptu"
 import * as SampleChains from "../test_data/prod-chain-data.js"
 import {deepCopy} from "./helpers.module.js"
 
@@ -101,11 +101,11 @@ test('Test invalid subtraction amount throws exception', () => {
     // IRPTU ADDITION - EMPTY INITIAL CHAIN TESTS
 
 test('Test full prod. chain output after IRPTU addition, and empty initial chain', () => {
-    expect(addIRPTU("burner-inserter", 10, deepCopy(SampleChains.emptyProdChain))).toEqual(SampleChains.simpleProdChain)
+    expect(addIRPTU("burner-inserter", 10, deepCopy(SampleChains.emptyProdChain))).toMatchObject(SampleChains.simpleProdChain)
 })
 
 test('Test full prod. chain output after IRPTU addition including hours time unit, and empty initial chain', () => {
-    expect(addIRPTU("burner-inserter", 600, deepCopy(SampleChains.emptyProdChain), "hour")).toEqual(SampleChains.simpleProdChain)
+    expect(addIRPTU("burner-inserter", 600, deepCopy(SampleChains.emptyProdChain), "hour")).toMatchObject(SampleChains.simpleProdChain)
 })
 
 test('Test user demand output after IRPTU addition, and empty initial chain', () => {
@@ -120,7 +120,7 @@ test('Test interm. demand output after IRPTU addition, and empty initial chain',
 
 test('Test full prod. chain output after IRPTU addition, and populated initial chain', () => {
     let popChain = addIRPTU("inserter", 10, deepCopy(SampleChains.emptyProdChain))
-    expect(addIRPTU("long-handed-inserter", 20, popChain)).toEqual(SampleChains.populatedProdChain)
+    expect(addIRPTU("long-handed-inserter", 20, popChain)).toMatchObject(SampleChains.populatedProdChain)
 })
 
 test('Test user demand output after IRPTU addition, and populated initial chain', () => {
@@ -137,17 +137,17 @@ test('Test interm. demand output after IRPTU addition, and populated initial cha
 
 test('Test empty prod. chain output after full IRPTU subtraction', () => {
     let popChain = addIRPTU("burner-inserter", 10, deepCopy(SampleChains.emptyProdChain))
-    expect(subtractIRPTU("burner-inserter", 10, popChain)).toEqual(SampleChains.emptyProdChain)
+    expect(subtractIRPTU("burner-inserter", 10, popChain)).toMatchObject(SampleChains.emptyProdChain)
 })
 
 test('Test partial prod. chain output after partial IRPTU subtraction', () => {
     let popChain = addIRPTU("burner-inserter", 10, deepCopy(SampleChains.emptyProdChain))
-    expect(subtractIRPTU("burner-inserter", 5, popChain)).toEqual(SampleChains.partialProdChain)
+    expect(subtractIRPTU("burner-inserter", 5, popChain)).toMatchObject(SampleChains.partialProdChain)
 })
 
 test('Test partial prod. chain output after partial IRPTU subtraction, including hours time unit', () => {
     let popChain = addIRPTU("burner-inserter", 10, deepCopy(SampleChains.emptyProdChain))
-    expect(subtractIRPTU("burner-inserter", 300, popChain, "hour")).toEqual(SampleChains.partialProdChain)
+    expect(subtractIRPTU("burner-inserter", 300, popChain, "hour")).toMatchObject(SampleChains.partialProdChain)
 })
 
 

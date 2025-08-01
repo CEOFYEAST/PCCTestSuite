@@ -1,0 +1,84 @@
+{
+  "timeUnit": "minute",
+  "prodChain": {
+    "inserter": {
+      "userIRPTU": 10,
+      "intermIRPTU": 0,
+      "dependentItems": {},
+      "ingredientItems": {
+        "electronic-circuit": 10,
+        "iron-gear-wheel": 10,
+        "iron-plate": 10
+      }
+    },
+    "electronic-circuit": {
+      "userIRPTU": 0,
+      "intermIRPTU": 10,
+      "dependentItems": {
+        "inserter": 10
+      },
+      "ingredientItems": {
+        "copper-cable": 30,
+        "iron-plate": 10
+      }
+    },
+    "copper-cable": {
+      "userIRPTU": 0,
+      "intermIRPTU": 30,
+      "dependentItems": {
+        "electronic-circuit": 30
+      },
+      "ingredientItems": {
+        "copper-plate": 15
+      }
+    },
+    "copper-plate": {
+      "userIRPTU": 0,
+      "intermIRPTU": 15,
+      "dependentItems": {
+        "copper-cable": 15
+      },
+      "ingredientItems": {
+        "copper-ore": 15
+      }
+    },
+    "copper-ore": {
+      "userIRPTU": 0,
+      "intermIRPTU": 15,
+      "dependentItems": {
+        "copper-plate": 15
+      },
+      "ingredientItems": {}
+    },
+    "iron-plate": {
+      "userIRPTU": 0,
+      "intermIRPTU": 40,
+      "dependentItems": {
+        "electronic-circuit": 10,
+        "iron-gear-wheel": 20,
+        "inserter": 10
+      },
+      "ingredientItems": {
+        "iron-ore": 40
+      }
+    },
+    "iron-ore": {
+      "userIRPTU": 0,
+      "intermIRPTU": 40,
+      "dependentItems": {
+        "iron-plate": 40
+      },
+      "ingredientItems": {}
+    },
+    "iron-gear-wheel": {
+      "userIRPTU": 0,
+      "intermIRPTU": 10,
+      "dependentItems": {
+        "inserter": 10
+      },
+      "ingredientItems": {
+        "iron-plate": 20
+      }
+    }
+  }
+}

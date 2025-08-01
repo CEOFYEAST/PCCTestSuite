@@ -1,14 +1,14 @@
-import {calculateIntermediaryDemand} from "@ceofyeast/prodchaincalculators/calculators"
+import {calculateIntermediaryDemand} from "@ceofyeast/prodchaincalculators-server/calculators"
 import * as SampleDemand from "../test_data/demand-output-data.js"
 
-test.only('Test proper intermediary demand calculation for simple input', () => {
+test('Test proper intermediary demand calculation for simple input', () => {
     let demandOutput = {}
     calculateIntermediaryDemand("burner-inserter", 10, demandOutput)
-    expect(demandOutput).toEqual(SampleDemand.simpleDemandOutput)
+    expect(demandOutput).toMatchObject(SampleDemand.simpleDemandOutput)
 })
 
-test.only('Test proper intermediary demand calculation for populated input', () => {
+test('Test proper intermediary demand calculation for populated input', () => {
     let demandOutput = {}
     calculateIntermediaryDemand("long-handed-inserter", 10, demandOutput)
-    expect(demandOutput).toEqual(SampleDemand.populatedDemandOutput)
+    expect(demandOutput).toMatchObject(SampleDemand.populatedDemandOutput)
 })

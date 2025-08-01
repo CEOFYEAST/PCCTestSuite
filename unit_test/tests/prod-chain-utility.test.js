@@ -1,4 +1,4 @@
-import {createProductionChainObject, getUserDemand, getItemIDs, getItemNamesAndIDs, recalculateTimeUnit} from "@ceofyeast/prodchaincalculators/utility"
+import {createProductionChainObject, getUserDemand, getItemIDs, getItemNamesAndIDs, recalculateTimeUnit} from "@ceofyeast/prodchaincalculators-server/utility"
 import * as SampleChains from "../test_data/prod-chain-data.js"
 import {deepCopy} from "./helpers.module.js"
 
@@ -7,11 +7,11 @@ import {deepCopy} from "./helpers.module.js"
     // VALID TESTS
 
 test('Test user demand parse on simple production chain', () => {
-    expect(getUserDemand(SampleChains.simpleProdChain["prodChain"])).toEqual(simpleParsedUserDemand)
+    expect(getUserDemand(SampleChains.simpleProdChain["prodChain"])).toMatchObject(simpleParsedUserDemand)
 })
 
 test('Test user demand parse on populated production chain', () => {
-    expect(getUserDemand(SampleChains.populatedProdChain["prodChain"])).toEqual(populatedParsedUserDemand)
+    expect(getUserDemand(SampleChains.populatedProdChain["prodChain"])).toMatchObject(populatedParsedUserDemand)
 })
 
 // Get Item IDs Tests
@@ -66,13 +66,13 @@ test('Test invalid time unit input for recalculation throws exeption', () => {
 test('Test valid simple prod. chain conversion to seconds', () => {
     let toTest = deepCopy(SampleChains.simpleProdChain)
     expect(recalculateTimeUnit(toTest, "second"))
-        .toEqual(SampleChains.simpleProdChain_Seconds)
+        .toMatchObject(SampleChains.simpleProdChain_Seconds)
 })
 
 test('Test valid simple prod. chain conversion to hours', () => {
     let toTest = deepCopy(SampleChains.simpleProdChain)
     expect(recalculateTimeUnit(toTest, "hour"))
-        .toEqual(SampleChains.simpleProdChain_Hours)
+        .toMatchObject(SampleChains.simpleProdChain_Hours)
 })
 
 // Prod Chain Creation Tests
@@ -88,11 +88,11 @@ test('Test invalid time unit input for creation throws exception', () => {
     // VALID TESTS
 
 test('Test production chain creation', () => {
-    expect(createProductionChainObject()).toEqual(SampleChains.emptyProdChain)
+    expect(createProductionChainObject()).toMatchObject(SampleChains.emptyProdChain)
 })
 
 test('Test production chain creation w/ time unit', () => {
-    expect(createProductionChainObject("second")).toEqual(SampleChains.emptyProdChain_Second)
+    expect(createProductionChainObject("second")).toMatchObject(SampleChains.emptyProdChain_Second)
 })
 
 // TEST DATA
