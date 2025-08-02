@@ -1,108 +1,94 @@
 <template>
   <div>
-    <div style="margin-bottom: 20px;">
-      <button @click="createFactory()">Create/Clear Factory</button>
+    <!-- View Switcher Interface -->
+    <div style="margin-bottom: 30px; text-align: center;">
+      <button 
+        @click="switchView('production')" 
+        :style="getButtonStyle('production')"
+      >
+        IRPTU Input Menu
+      </button>
+      <button 
+        @click="switchView('new')" 
+        :style="getButtonStyle('new')"
+      >
+        PC Graph Visualizer
+      </button>
     </div>
-    <div style="margin-bottom: 20px; border: 1px solid black; padding: 10px;">
-      <div style="margin-bottom: 10px;">
-      <label for="itemID">Enter Item ID</label>
-      <input id="itemID" type="text" v-model="itemID" style="margin-left: 10px;" />
-      </div>
-      <div style="margin-bottom: 10px;">
-      <label for="itemIRPTU">Enter Item IRPTU</label>
-      <input id="itemIRPTU" type="number" v-model="itemIRPTU" style="margin-left: 10px;" />
-      </div>
-      <div>
-      <button @click="addToFactory()" style="margin-right: 10px;">Add Specified Item to the Factory</button>
-      <button @click="removeFromFactory()">Remove Specified Item from the Factory</button>
-      </div>
-    </div>
-    <div style="margin-bottom: 20px;">
-      <button @click="addOneOfEach()">Add One of Each Item to the Factory</button>
-    </div>
-    <div style="margin-bottom: 20px; border: 1px solid black; padding: 10px;">
-      <label for="timeUnit">Select Time Unit</label>
-      <select id="timeUnit" v-model="selectedTimeUnit" @change="changeTimeUnit(selectedTimeUnit)" style="margin-left: 10px;">
-      <option value="second">Second</option>
-      <option value="minute">Minute</option>
-      <option value="hour">Hour</option>
-      </select>
-    </div>
-      <h3>Time Unit</h3>
-        <div style="border: 1px solid black; margin-bottom: 10px;">{{ timeUnit }}</div>
-    <!-- </div> -->
+
+    <!-- Component Views -->
     <div>
-      <h3>User Input</h3>
-      <div v-for="(value, key) in userInput" :key="key" style="border: 1px solid black; margin-bottom: 10px;">
-      <div>{{ key }}: {{ value }}</div>
-      </div>
-    </div>
-    <div>
-      <h3>Production Chain</h3>
-      <div v-for="(value, key) in prodChain" :key="key" style="border: 1px solid black; margin-bottom: 10px;">
-        <div>{{ key }}: {{ value }}</div>
-      </div>
+      <ProductionChainView 
+        v-if="currentView === 'production'" 
+        :prodChainObject="prodChainObject"
+        @update-prod-chain="updateProdChain"
+      />
+      <NewComponent 
+        v-if="currentView === 'new'" 
+        :prodChainObject="prodChainObject"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import * as IRPTU from '@ceofyeast/prodchaincalculators/irptu'
+import ProductionChainView from './components/InputMenu.vue'
+import NewComponent from './components/GraphVisualizer.vue'
 import * as UTILITY from '@ceofyeast/prodchaincalculators/utility'
-import config from '@ceofyeast/prodchaincalculators/config'
 
 export default {
   name: 'App',
+  components: {
+    HelloWorld,
+    ProductionChainView,
+    NewComponent
+  },
   data() {
     return {
-      loadedFactory: {},
-      baseURL: config.baseURL,
-      itemID: "inserter",
-      itemIRPTU: 10,
-      userInput: {},
-      selectedTimeUnit: "" // Default value for the time unit
-    }
-  },
-  computed: {
-    prodChain() {
-      return this.loadedFactory.prodChain
-    },
-    // userInput() {
-    //   return UTILITY.getUserDemand(this.prodChain)
-    // },
-    timeUnit() {
-      return this.loadedFactory.timeUnit
+      currentView: 'production', // Default to production chain view
+      prodChainObject: {} // This will hold the production chain data
     }
   },
   methods: {
-    createFactory(){
-      this.loadedFactory = UTILITY.createProductionChainObject()
-      this.userInput = UTILITY.getUserDemand(this.prodChain)
+    switchView(view) {
+      this.currentView = view
     },
-    addToFactory(){
-      try {
-        IRPTU.addIRPTU(this.itemID, this.itemIRPTU, this.loadedFactory)
-        this.userInput = UTILITY.getUserDemand(this.prodChain)
-      } catch(err){
-        console.log("Error Message: " + err.message)
+    updateProdChain(newProdChainObject) {
+      this.prodChainObject = newProdChainObject
+    },
+    getButtonStyle(view) {
+      const baseStyle = {
+        padding: '12px 24px',
+        margin: '0 5px',
+        border: '2px solid #007bff',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        fontSize: '16px',
+        fontWeight: 'bold',
+        transition: 'all 0.3s ease'
       }
-    },
-    removeFromFactory(){
-      IRPTU.subtractIRPTU(this.itemID, this.itemIRPTU, this.loadedFactory)
-      this.userInput = UTILITY.getUserDemand(this.prodChain)
-    },
-    changeTimeUnit(newTimeUnit){
-      UTILITY.recalculateTimeUnit(this.loadedFactory, newTimeUnit)
-      this.userInput = UTILITY.getUserDemand(this.prodChain)
-    },
-    addOneOfEach(){
-      let itemIDs = UTILITY.getItemIDs()
-      for(let i = 0; i < itemIDs.length; i++){
-        IRPTU.addIRPTU(itemIDs[i], 1, this.loadedFactory)
+      
+      if (this.currentView === view) {
+        // Selected button style
+        return {
+          ...baseStyle,
+          backgroundColor: '#007bff',
+          color: 'white'
+        }
+      } else {
+        // Unselected button style
+        return {
+          ...baseStyle,
+          backgroundColor: 'white',
+          color: '#007bff'
+        }
       }
-      this.userInput = UTILITY.getUserDemand(this.prodChain)
     }
+  },
+  mounted() {
+    // Initialize with an empty production chain object
+    this.prodChainObject = UTILITY.createProductionChainObject()
   },
 }
 </script>
