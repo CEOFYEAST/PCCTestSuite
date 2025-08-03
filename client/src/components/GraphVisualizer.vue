@@ -13,8 +13,6 @@
 <script>
 import * as GraphTransformer from '@ceofyeast/prodchaincalculators/graph'
 import { Graph } from '@antv/g6'
-import { addRecipesLoadedListener, recipesLoaded } from '@ceofyeast/prodchaincalculators/recipes'
-import Config from '@ceofyeast/prodchaincalculators/config'
 
 export default {
   name: 'GraphVisualizer',
@@ -48,32 +46,107 @@ export default {
       
       this.graph = new Graph({
         container: container,
-        width: 5000,
-        height: 5000,
+        width: 1500,
+        height: 750,
         data: this.graphData, // Use graphData instead of this.graph
         behaviors: ['drag-canvas', 'zoom-canvas'],
         layout: {
           type: 'antv-dagre',
-          ranksep: 50,
+          ranksep: 100,
           nodesep: 50,
-          sortByCombo: true,
+          nodeSize: [100, 20],
+        },
+        edge: {
+          type: 'polyline',
+          
+          animation: {
+            enter: false,
+          },
+          style: {
+            lineWidth: 4,
+            radius: 50,
+            // router: {
+            //   type: 'shortest-path'
+            // },
+
+            labelAutoRotate: false,
+            labelFontSize: 16,
+            labelColor: '#fff',
+            labelPlacement: 0.33,
+            // labelOffsetY: 50,
+            // labelOffsetX: -25,
+
+            labelBackground: true,
+            labelBackgroundFill: '#90ee90',
+            labelBackgroundFillOpacity: 0.5,
+            labelBackgroundHeight: 100,
+            labelBackgroundRadius: 25,
+
+            endArrow: true, // End arrow
+            endArrowType: 'vee', // Arrow type
+            endArrowSize: 14, // Arrow size
+          }
         },
         node: {
-          type: 'circle',
+          type: 'html',
           style: {
-            size: 30,
-            fill: '#ADD8E6',
-            stroke: '#6495ED',
-            lineWidth: 2,
-          },
-          labelCfg: {
-            style: {
-              fill: '#333',
-              fontSize: 12,
+            size: [100, 20],
+            innerHTML: (d) => {
+              const ICON_MAP = {
+                error: '&#10060;',
+                overload: '&#9889;',
+                running: '&#9989;',
+              };
+
+              const COLOR_MAP = {
+                error: '#f5222d',
+                overload: '#faad14',
+                running: '#52c41a',
+              };
+
+              const {
+                data: { userDemand, intermDemand, timeUnit },
+              } = d;
+
+              const nodeStyle = `"
+                width: 80%; 
+                height: 80%; 
+                background: lightgreen; 
+                color: #fff;
+                user-select: none;
+                padding: 10px;
+                border: 1px solid lightgray;
+                border-radius: 8px;
+              "`;
+
+              const nodeContentStyle = `"
+                display: flex;
+                flex-direction: row;
+              "`;
+
+              const nodeItemStyle = `"
+                font-weight: bold; 
+                font-size: 14px;
+                flex-grow: 1;
+              "`;
+
+              return `
+                <div class="node" style=${nodeStyle}>
+                  <div class="node__content" style=${nodeContentStyle}>
+                    <div class="node__icon" style=${nodeItemStyle}>
+                      Icon
+                    </div>
+                    <div class="node__seperator" style=${nodeItemStyle}>
+                      :
+                    </div>
+                    <div class="node__demand" style=${nodeItemStyle}>
+                      ${intermDemand + userDemand}
+                    </div>
+                  </div>
+                </div>`;
             },
           },
         },
-        // behaviors: ['drag-element', 'drag-canvas', 'zoom-canvas'],
       })
 
     },
@@ -106,4 +179,21 @@ export default {
 .container-GraphVisualizer {
   padding: 20px;
 }
+
+/* .node {
+    width: 100%; 
+    height: 100%; 
+    background: lightgreen; 
+    color: #fff;
+    user-select: none;
+    display: flex; 
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+}
+
+.node__demand, .node__seperator, .node__icon {
+  font-weight: bold; 
+  font-size: 14px;
+} */
 </style>
