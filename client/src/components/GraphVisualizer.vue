@@ -48,25 +48,37 @@ export default {
         container: container,
         width: 1500,
         height: 750,
-        data: this.graphData, // Use graphData instead of this.graph
+        data: this.graphData,
         behaviors: ['drag-canvas', 'zoom-canvas'],
         layout: {
           type: 'antv-dagre',
-          ranksep: 100,
+          rankdir: 'LR',
+          ranksep: 200,
           nodesep: 50,
-          nodeSize: [100, 20],
+          ranker: "longest-path" ,
+          align: 'UL',
+          preventOverlap: true,
+          controlPoints: true,
+          nodeSpacing: 20,
+          //radial: true
+          // minlen: 2,              // Minimum edge length (forces more separation)
+          // edgesep: 20,
         },
         edge: {
-          type: 'polyline',
-          
+          type: 'cubic-horizontal',
+          //router: 'orth',
+          controlPoints: true,
           animation: {
             enter: false,
           },
           style: {
-            lineWidth: 4,
+            lineWidth: 3,
             radius: 50,
+            zIndex: 2,
+            labelZIndex: 3,
             // router: {
-            //   type: 'shortest-path'
+            //   type: 'shortest-path',
+            //   enableObstacleAvoidance: true
             // },
 
             labelAutoRotate: false,
@@ -78,7 +90,7 @@ export default {
 
             labelBackground: true,
             labelBackgroundFill: '#90ee90',
-            labelBackgroundFillOpacity: 0.5,
+            labelBackgroundFillOpacity: 1,
             labelBackgroundHeight: 100,
             labelBackgroundRadius: 25,
 
@@ -90,7 +102,7 @@ export default {
         node: {
           type: 'html',
           style: {
-            size: [100, 20],
+            size: [90, 30],
             innerHTML: (d) => {
               const ICON_MAP = {
                 error: '&#10060;',
@@ -109,8 +121,8 @@ export default {
               } = d;
 
               const nodeStyle = `"
-                width: 80%; 
-                height: 80%; 
+                width: 80px; 
+                height: 20px; 
                 background: lightgreen; 
                 color: #fff;
                 user-select: none;
@@ -181,8 +193,8 @@ export default {
 }
 
 /* .node {
-    width: 100%; 
-    height: 100%; 
+    width: 80px; 
+    height: 20px; 
     background: lightgreen; 
     color: #fff;
     user-select: none;
