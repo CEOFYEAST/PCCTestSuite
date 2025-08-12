@@ -1,0 +1,68 @@
+{
+  "timeUnit": "minute",
+  "crafterConfig": {
+    "miner": "electric-mining-drill",
+    "smelter": "steel-furnace",
+    "assembler": "assembling-machine-1"
+  },
+  "prodChain": {
+    "burner-inserter": {
+      "name": "Burner inserter",
+      "thumbDir": "Burner_inserter.png",
+      "thumbName": "32px-Burner_inserter.png",
+      "crafter": "assembling-machine-1",
+      "crafterCount": 0.38333333333333336,
+      "userIRPTU": 23,
+      "intermIRPTU": 0,
+      "dependentItems": {},
+      "ingredientItems": {
+        "iron-gear-wheel": 23,
+        "iron-plate": 23
+      }
+    },
+    "iron-gear-wheel": {
+      "name": "Iron gear wheel",
+      "thumbDir": "Iron_gear_wheel.png",
+      "thumbName": "32px-Iron_gear_wheel.png",
+      "crafter": "assembling-machine-1",
+      "crafterCount": 0.38333333333333336,
+      "userIRPTU": 0,
+      "intermIRPTU": 23,
+      "dependentItems": {
+        "burner-inserter": 23
+      },
+      "ingredientItems": {
+        "iron-plate": 46
+      }
+    },
+    "iron-plate": {
+      "name": "Iron plate",
+      "thumbDir": "Iron_plate.png",
+      "thumbName": "32px-Iron_plate.png",
+      "crafter": "steel-furnace",
+      "crafterCount": 2.0125,
+      "userIRPTU": 0,
+      "intermIRPTU": 69,
+      "dependentItems": {
+        "iron-gear-wheel": 46,
+        "burner-inserter": 23
+      },
+      "ingredientItems": {
+        "iron-ore": 69
+      }
+    },
+    "iron-ore": {
+      "name": "Iron ore",
+      "thumbDir": "Iron_ore.png",
+      "thumbName": "32px-Iron_ore.png",
+      "crafter": "electric-mining-drill",
+      "crafterCount": 2.3,
+      "userIRPTU": 0,
+      "intermIRPTU": 69,
+      "dependentItems": {
+        "iron-plate": 69
+      },
+      "ingredientItems": {}
+    }
+  }
+}

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 3001 --mode development src/main.js",
-    "build": "vue-cli-service build src/scripts/main.js"
+    "build": "vue-cli-service build src/main.js"
   },
   "dependencies": {
     "@antv/g6": "^5.0.49",

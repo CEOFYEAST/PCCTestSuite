@@ -443,6 +443,7 @@
     "boiler": {
       "id": "boiler",
       "name": "Boiler",
+      "crafter-category": "boiler",
       "type": "Machinery",
       "wiki_link": "https://wiki.factorio.com/Boiler",
       "category": "Production",
@@ -2060,6 +2061,7 @@
       "type": "Resource",
       "wiki_link": "https://wiki.factorio.com/Iron_ore",
       "category": "Intermediate product",
+      "crafter-category": "miner",
       "recipe": {
         "time": null,
         "yield": null,
@@ -2072,6 +2074,7 @@
       "type": "Intermediate product",
       "wiki_link": "https://wiki.factorio.com/Iron_plate",
       "category": "Intermediate product",
+      "crafter-category": "smelter",
       "recipe": {
         "time": 3.5,
         "yield": 1,
@@ -4020,6 +4023,7 @@
     "steam": {
       "id": "steam",
       "name": "Steam",
+      "crafter-category": "boiler",
       "type": "Liquid",
       "wiki_link": "https://wiki.factorio.com/Steam",
       "category": "Intermediate product",

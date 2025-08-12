@@ -55,7 +55,7 @@ export default {
           rankdir: 'LR',
           ranksep: 200,
           nodesep: 50,
-          ranker: "longest-path" ,
+          ranker: "tight-tree" ,
           align: 'UL',
           preventOverlap: true,
           controlPoints: true,
@@ -117,8 +117,10 @@ export default {
               };
 
               const {
-                data: { userDemand, intermDemand, timeUnit },
+                data: { thumbDir, thumbName, userDemand, intermDemand, timeUnit },
               } = d;
+
+              const thumbsPath = `/assets/client_thumbs/${thumbDir}/${thumbName}`
 
               const nodeStyle = `"
                 width: 80px; 
@@ -146,7 +148,7 @@ export default {
                 <div class="node" style=${nodeStyle}>
                   <div class="node__content" style=${nodeContentStyle}>
                     <div class="node__icon" style=${nodeItemStyle}>
-                      Icon
+                      <img src="${thumbsPath}" alt="${d.id}" style="width: 16px; height: 16px;" onerror="this.style.display='none';" />
                     </div>
                     <div class="node__seperator" style=${nodeItemStyle}>
                       :

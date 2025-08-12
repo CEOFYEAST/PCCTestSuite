@@ -1,0 +1,406 @@
+{
+  "timeUnit": "minute",
+  "crafterConfig": {
+    "miner": "electric-mining-drill",
+    "smelter": "steel-furnace",
+    "assembler": "assembling-machine-1",
+    "fluid-assembler": "assembling-machine-2",
+    "chem": "chemical-plant",
+    "centrifuge": "centrifuge",
+    "oil-pump": "pumpjack",
+    "refinery": "oil-refinery",
+    "silo": "rocket-silo",
+    "reactor": "nuclear-reactor",
+    "water-pump": "offshore-pump",
+    "manual": ""
+  },
+  "prodChain": {
+    "satellite": {
+      "name": "Satellite",
+      "thumbDir": "Satellite.png",
+      "thumbName": "32px-Satellite.png",
+      "crafter": "assembling-machine-1",
+      "crafterCount": 3.8333333333333335,
+      "userIRPTU": 23,
+      "intermIRPTU": 0,
+      "dependentItems": {},
+      "ingredientItems": {
+        "accumulator": 2300,
+        "low-density-structure": 2300,
+        "processing-unit": 2300,
+        "radar": 115,
+        "rocket-fuel": 1150,
+        "solar-panel": 2300
+      }
+    },
+    "accumulator": {
+      "name": "Accumulator",
+      "thumbDir": "Accumulator.png",
+      "thumbName": "32px-Accumulator.png",
+      "crafter": "assembling-machine-1",
+      "crafterCount": 766.6666666666666,
+      "userIRPTU": 0,
+      "intermIRPTU": 2300,
+      "dependentItems": {
+        "satellite": 2300
+      },
+      "ingredientItems": {
+        "battery": 11500,
+        "iron-plate": 4600
+      }
+    },
+    "battery": {
+      "name": "Battery",
+      "thumbDir": "Battery.png",
+      "thumbName": "32px-Battery.png",
+      "crafter": "chemical-plant",
+      "crafterCount": 958.3333333333334,
+      "userIRPTU": 0,
+      "intermIRPTU": 11500,
+      "dependentItems": {
+        "accumulator": 11500
+      },
+      "ingredientItems": {
+        "copper-plate": 11500,
+        "iron-plate": 11500,
+        "sulfuric-acid": 230000
+      }
+    },
+    "copper-plate": {
+      "name": "Copper plate",
+      "thumbDir": "Copper_plate.png",
+      "thumbName": "32px-Copper_plate.png",
+      "crafter": "steel-furnace",
+      "crafterCount": 5224.114583333334,
+      "userIRPTU": 0,
+      "intermIRPTU": 179112.5,
+      "dependentItems": {
+        "battery": 11500,
+        "low-density-structure": 11500,
+        "copper-cable": 144612.5,
+        "solar-panel": 11500
+      },
+      "ingredientItems": {
+        "copper-ore": 179112.5
+      }
+    },
+    "copper-ore": {
+      "name": "Copper ore",
+      "thumbDir": "Copper_ore.png",
+      "thumbName": "32px-Copper_ore.png",
+      "crafter": "electric-mining-drill",
+      "crafterCount": 5970.416666666667,
+      "userIRPTU": 0,
+      "intermIRPTU": 179112.5,
+      "dependentItems": {
+        "copper-plate": 179112.5
+      },
+      "ingredientItems": {}
+    },
+    "iron-plate": {
+      "name": "Iron plate",
+      "thumbDir": "Iron_plate.png",
+      "thumbName": "32px-Iron_plate.png",
+      "crafter": "steel-furnace",
+      "crafterCount": 8341.8125,
+      "userIRPTU": 0,
+      "intermIRPTU": 286005,
+      "dependentItems": {
+        "battery": 11500,
+        "sulfuric-acid": 4830,
+        "accumulator": 4600,
+        "steel-plate": 172500,
+        "electronic-circuit": 90275,
+        "iron-gear-wheel": 1150,
+        "radar": 1150
+      },
+      "ingredientItems": {
+        "iron-ore": 286005
+      }
+    },
+    "iron-ore": {
+      "name": "Iron ore",
+      "thumbDir": "Iron_ore.png",
+      "thumbName": "32px-Iron_ore.png",
+      "crafter": "electric-mining-drill",
+      "crafterCount": 9533.5,
+      "userIRPTU": 0,
+      "intermIRPTU": 286005,
+      "dependentItems": {
+        "iron-plate": 286005
+      },
+      "ingredientItems": {}
+    },
+    "sulfuric-acid": {
+      "name": "Sulfuric acid",
+      "thumbDir": "Sulfuric_acid.png",
+      "thumbName": "32px-Sulfuric_acid.png",
+      "crafter": "chemical-plant",
+      "crafterCount": 80.5,
+      "userIRPTU": 0,
+      "intermIRPTU": 241500,
+      "dependentItems": {
+        "battery": 230000,
+        "processing-unit": 11500
+      },
+      "ingredientItems": {
+        "iron-plate": 4830,
+        "sulfur": 24150,
+        "water": 483000
+      }
+    },
+    "sulfur": {
+      "name": "Sulfur",
+      "thumbDir": "Sulfur.png",
+      "thumbName": "32px-Sulfur.png",
+      "crafter": "chemical-plant",
+      "crafterCount": 201.25,
+      "userIRPTU": 0,
+      "intermIRPTU": 24150,
+      "dependentItems": {
+        "sulfuric-acid": 24150
+      },
+      "ingredientItems": {
+        "petroleum-gas": 362250,
+        "water": 362250
+      }
+    },
+    "petroleum-gas": {
+      "name": "Petroleum gas",
+      "thumbDir": "Petroleum_gas.png",
+      "thumbName": "32px-Petroleum_gas.png",
+      "crafter": "chemical-plant",
+      "crafterCount": null,
+      "userIRPTU": 0,
+      "intermIRPTU": 569250,
+      "dependentItems": {
+        "sulfur": 362250,
+        "plastic-bar": 207000
+      },
+      "ingredientItems": {}
+    },
+    "water": {
+      "name": "Water",
+      "thumbDir": "Water.png",
+      "thumbName": "32px-Water.png",
+      "crafter": "offshore-pump",
+      "crafterCount": 11.739583333333334,
+      "userIRPTU": 0,
+      "intermIRPTU": 845250,
+      "dependentItems": {
+        "sulfur": 362250,
+        "sulfuric-acid": 483000
+      },
+      "ingredientItems": {}
+    },
+    "low-density-structure": {
+      "name": "Low density structure",
+      "thumbDir": "Low_density_structure.png",
+      "thumbName": "32px-Low_density_structure.png",
+      "crafter": "assembling-machine-1",
+      "crafterCount": 2300,
+      "userIRPTU": 0,
+      "intermIRPTU": 2300,
+      "dependentItems": {
+        "satellite": 2300
+      },
+      "ingredientItems": {
+        "copper-plate": 11500,
+        "plastic-bar": 11500,
+        "steel-plate": 23000
+      }
+    },
+    "plastic-bar": {
+      "name": "Plastic bar",
+      "thumbDir": "Plastic_bar.png",
+      "thumbName": "32px-Plastic_bar.png",
+      "crafter": "chemical-plant",
+      "crafterCount": 172.5,
+      "userIRPTU": 0,
+      "intermIRPTU": 20700,
+      "dependentItems": {
+        "low-density-structure": 11500,
+        "advanced-circuit": 9200
+      },
+      "ingredientItems": {
+        "coal": 10350,
+        "petroleum-gas": 207000
+      }
+    },
+    "coal": {
+      "name": "Coal",
+      "thumbDir": "Coal.png",
+      "thumbName": "32px-Coal.png",
+      "crafter": "electric-mining-drill",
+      "crafterCount": 345,
+      "userIRPTU": 0,
+      "intermIRPTU": 10350,
+      "dependentItems": {
+        "plastic-bar": 10350
+      },
+      "ingredientItems": {}
+    },
+    "steel-plate": {
+      "name": "Steel plate",
+      "thumbDir": "Steel_plate.png",
+      "thumbName": "32px-Steel_plate.png",
+      "crafter": "steel-furnace",
+      "crafterCount": 10062.5,
+      "userIRPTU": 0,
+      "intermIRPTU": 34500,
+      "dependentItems": {
+        "low-density-structure": 23000,
+        "solar-panel": 11500
+      },
+      "ingredientItems": {
+        "iron-plate": 172500
+      }
+    },
+    "processing-unit": {
+      "name": "Processing unit",
+      "thumbDir": "Processing_unit.png",
+      "thumbName": "32px-Processing_unit.png",
+      "crafter": "assembling-machine-2",
+      "crafterCount": 511.1111111111111,
+      "userIRPTU": 0,
+      "intermIRPTU": 2300,
+      "dependentItems": {
+        "satellite": 2300
+      },
+      "ingredientItems": {
+        "advanced-circuit": 4600,
+        "electronic-circuit": 46000,
+        "sulfuric-acid": 11500
+      }
+    },
+    "advanced-circuit": {
+      "name": "Advanced circuit",
+      "thumbDir": "Advanced_circuit.png",
+      "thumbName": "32px-Advanced_circuit.png",
+      "crafter": "assembling-machine-1",
+      "crafterCount": 920,
+      "userIRPTU": 0,
+      "intermIRPTU": 4600,
+      "dependentItems": {
+        "processing-unit": 4600
+      },
+      "ingredientItems": {
+        "copper-cable": 18400,
+        "electronic-circuit": 9200,
+        "plastic-bar": 9200
+      }
+    },
+    "copper-cable": {
+      "name": "Copper cable",
+      "thumbDir": "Copper_cable.png",
+      "thumbName": "32px-Copper_cable.png",
+      "crafter": "assembling-machine-1",
+      "crafterCount": 2410.2083333333335,
+      "userIRPTU": 0,
+      "intermIRPTU": 289225,
+      "dependentItems": {
+        "advanced-circuit": 18400,
+        "electronic-circuit": 270825
+      },
+      "ingredientItems": {
+        "copper-plate": 144612.5
+      }
+    },
+    "electronic-circuit": {
+      "name": "Electronic circuit",
+      "thumbDir": "Electronic_circuit.png",
+      "thumbName": "32px-Electronic_circuit.png",
+      "crafter": "assembling-machine-1",
+      "crafterCount": 1504.5833333333333,
+      "userIRPTU": 0,
+      "intermIRPTU": 90275,
+      "dependentItems": {
+        "advanced-circuit": 9200,
+        "processing-unit": 46000,
+        "radar": 575,
+        "solar-panel": 34500
+      },
+      "ingredientItems": {
+        "copper-cable": 270825,
+        "iron-plate": 90275
+      }
+    },
+    "radar": {
+      "name": "Radar",
+      "thumbDir": "Radar.png",
+      "thumbName": "32px-Radar.png",
+      "crafter": "assembling-machine-1",
+      "crafterCount": 1.9166666666666667,
+      "userIRPTU": 0,
+      "intermIRPTU": 115,
+      "dependentItems": {
+        "satellite": 115
+      },
+      "ingredientItems": {
+        "electronic-circuit": 575,
+        "iron-gear-wheel": 575,
+        "iron-plate": 1150
+      }
+    },
+    "iron-gear-wheel": {
+      "name": "Iron gear wheel",
+      "thumbDir": "Iron_gear_wheel.png",
+      "thumbName": "32px-Iron_gear_wheel.png",
+      "crafter": "assembling-machine-1",
+      "crafterCount": 9.583333333333334,
+      "userIRPTU": 0,
+      "intermIRPTU": 575,
+      "dependentItems": {
+        "radar": 575
+      },
+      "ingredientItems": {
+        "iron-plate": 1150
+      }
+    },
+    "rocket-fuel": {
+      "name": "Rocket fuel",
+      "thumbDir": "Rocket_fuel.png",
+      "thumbName": "32px-Rocket_fuel.png",
+      "crafter": "assembling-machine-2",
+      "crafterCount": 766.6666666666666,
+      "userIRPTU": 0,
+      "intermIRPTU": 1150,
+      "dependentItems": {
+        "satellite": 1150
+      },
+      "ingredientItems": {
+        "solid-fuel": 11500
+      }
+    },
+    "solid-fuel": {
+      "name": "Solid fuel",
+      "thumbDir": "Solid_fuel.png",
+      "thumbName": "32px-Solid_fuel.png",
+      "crafter": "chemical-plant",
+      "crafterCount": null,
+      "userIRPTU": 0,
+      "intermIRPTU": 11500,
+      "dependentItems": {
+        "rocket-fuel": 11500
+      },
+      "ingredientItems": {}
+    },
+    "solar-panel": {
+      "name": "Solar panel",
+      "thumbDir": "Solar_panel.png",
+      "thumbName": "32px-Solar_panel.png",
+      "crafter": "assembling-machine-1",
+      "crafterCount": 766.6666666666666,
+      "userIRPTU": 0,
+      "intermIRPTU": 2300,
+      "dependentItems": {
+        "satellite": 2300
+      },
+      "ingredientItems": {
+        "copper-plate": 11500,
+        "electronic-circuit": 34500,
+        "steel-plate": 11500
+      }
+    }
+  }
+}
